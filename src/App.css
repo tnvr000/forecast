@@ -1,16 +1,14 @@
 .App {
-  text-align: center;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,6 +19,124 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.date-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 15%;
+}
+.date {
+  display:inline-block;
+  width: 250px;
+  font-size: 25px;
+  padding: 10px;
+  text-align: center;
+}
+.previous-date,
+.next-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 30px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.search-bar-container {
+  height: 15%;
+  background: blueviolet;
+  position: relative;
+}
+
+.weather-app {
+  display: flex;
+  flex-direction: column;
+  background: green;
+  margin: 50px auto;
+  width: 550px;
+  height: 400px;
+
+}
+
+.current-weather {
+  display: flex;
+  flex-direction: column;
+  background: red;
+  height: 85%;
+}
+
+.current-weather-summary {
+  background: lime;
+  display: flex;
+  flex-basis: 25%;
+}
+.current-weather-summary-text {
+  background: cyan;
+}
+.current-weather-icon-container {
+  background: yellowgreen;
+}
+.current-weather-icon {
+  
+}
+
+.current-weather-info {
+  flex-basis: 40%;
+  background: blue;
+  overflow: hidden;
+}
+
+.hourly-temp-chart-container {
+  flex-basis: 35%;
+  background: chocolate;
+}
+
+.daily-weather {
+  background: lime;
+  height: 85%;
+}
+.daily-weather-summary {
+  text-align: center;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.daily-weather-hide-container {
+  position: absolute;
+  background: red;
+  width: 10%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.daily-weather-hide {
+  font-size: 35px;
+  font-weight: 700;
+  padding: 0 10px;
+  cursor: pointer;
+}
+.daily-weather-show-container {
+  position: absolute;
+  background: red;
+  width: 10%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.daily-weather-show {
+  font-size: 35px;
+  font-weight: 700;
+  padding: 0 10px;
+  cursor: pointer;
 }
 
 @keyframes App-logo-spin {
