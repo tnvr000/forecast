@@ -1,4 +1,5 @@
 import React from 'react';
+import './CurrentWeather.css'
 
 class CurrentWeather extends React.Component {
 	render() {

@@ -1,4 +1,5 @@
 import React from 'react'
+import './SearchBar.css'
 import {cities} from './CityList';
 import AutoCompleteSearchBox from './AutoCompleteSearchBox';
 

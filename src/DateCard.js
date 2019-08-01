@@ -1,4 +1,5 @@
 import React from 'react';
+import './DateCard.css'
 
 class DateCard extends React.Component {
   constructor(props) {

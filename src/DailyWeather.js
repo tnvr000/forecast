@@ -1,4 +1,5 @@
 import React from 'react'
+import './DailyWeather.css'
 
 class DailyWeather extends React.Component {
   render() {

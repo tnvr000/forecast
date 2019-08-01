@@ -1,4 +1,5 @@
 import React from 'react';
+import './WeatherApp.css'
 import DataExtractor from './DataExtractor';
 import CurrentWeather from './CurrentWeather';
 import DailyWeather from './DailyWeather';

@@ -1,0 +1,29 @@
+.weather-app {
+	display: flex;
+	flex-direction: column;
+	background: green;
+	margin: 50px auto;
+	width: 550px;
+	height: 400px;
+}
+.search-bar-container {
+	height: 15%;
+	background: blueviolet;
+	position: relative;
+}
+.current-weather {
+	display: flex;
+	flex-direction: column;
+	background: red;
+	height: 85%;
+}
+.date-container {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	height: 15%;
+}
+.daily-weather {
+	background: lime;
+	height: 85%;
+}

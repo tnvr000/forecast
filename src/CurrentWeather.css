@@ -1,0 +1,23 @@
+.current-weather-summary {
+	background: lime;
+	display: flex;
+	flex-basis: 25%;
+}
+.current-weather-summary-text {
+	background: cyan;
+}
+.current-weather-icon-container {
+	background: yellowgreen;
+}
+.current-weather-icon {
+
+}
+.current-weather-info {
+	flex-basis: 40%;
+	background: blue;
+	overflow: hidden;
+}
+.hourly-temp-chart-container {
+	flex-basis: 35%;
+	background: chocolate;
+}
