@@ -1,4 +1,4 @@
-export var forecast = {
+var forecast = {
   "latitude": 20,
   "longitude": 86,
   "timezone": "Asia/Kolkata",
@@ -1343,3 +1343,5 @@ export var forecast = {
   },
   "offset": 5.5
 }
+
+export default forecast;
