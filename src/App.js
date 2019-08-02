@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import WeatherApp from './WeatherApp'
+import forecast from './response'
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      forecast: null,
+      forecast: forecast,
       lat: 20,
       lon: 86,
       name: "Bhubaneswar",
@@ -17,16 +18,16 @@ class App extends Component {
     this.updateLocation = this.updateLocation.bind(this);
   }
 
-  componentDidMount() {
-    loadWeather(this.state.lat, this.state.lon).then((forecast) => {
-      this.setState({forecast});
-    });
-  }
+  // componentDidMount() {
+  //   loadWeather(this.state.lat, this.state.lon).then((forecast) => {
+  //     this.setState({forecast});
+  //   });
+  // }
 
   updateLocation(lat, lon, name) {
-    loadWeather(lat, lon).then((forecast) => {
-      this.setState({forecast, lat, lon, name});
-    })
+    // loadWeather(lat, lon).then((forecast) => {
+    //   this.setState({forecast, lat, lon, name});
+    // })
   }
   render() {
     return (

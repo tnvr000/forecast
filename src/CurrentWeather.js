@@ -7,7 +7,10 @@ class CurrentWeather extends React.Component {
 			<div className="current-weather">
         <div className="current-weather-summary">
           <div className="current-weather-icon-container">
-            icon
+						<img 
+							src={this.props.currentWeather.icon}
+							alt={this.props.currentWeather.iconName}
+						/>
           </div>
           <div className="current-weather-summary-text">
             {this.props.currentWeather.summary}

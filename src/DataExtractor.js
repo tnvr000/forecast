@@ -1,3 +1,16 @@
+import rain from './SVG/rain.svg';
+import clearDay from './SVG/clear-day.svg';
+import clearNight from './SVG/clear-night.svg';
+import cloudy from './SVG/cloudy.svg';
+import fog from './SVG/fog.svg';
+import hail from './SVG/hail.svg';
+import sleet from './SVG/sleet.svg';
+import snow from './SVG/snow.svg';
+import thunderstorm from './SVG/thunderstorm.svg';
+import wind from './SVG/wind.svg';
+import tornado from './SVG/tornado.svg';
+import partlyCloudyDay from './SVG/partly-cloudy-day.svg';
+import partlyCloudyNight from './SVG/partly-cloudy-night.svg';
 var DataExtractor = {
     days: {
         0: 'Sun',
@@ -22,18 +35,28 @@ var DataExtractor = {
         11: 'Nov',
         12: 'Dec',
     },
-    // icons: {
-    //     'Clear': Clear,
-    //     'Clouds': Clouds,
-    //     'PartlyClouds': PartlyClouds,
-    //     'Rain': Rain,
-    //     'Thunderstorm': Thunderstorm,
-    // },
+    icons: {
+        'clear-day': clearDay,
+        'clear-night': clearNight,
+        'partly-cloudy-day': partlyCloudyDay,
+        'partly-cloudy-night': partlyCloudyNight,
+        'cloudy': cloudy,
+        'fog': fog,
+        'snow': snow,
+        'rain': rain,
+        'hail': hail,
+        'sleet': sleet,
+        'wind': wind,
+        'thunderstorm': thunderstorm,
+        'tornado': tornado,
+    },
     getCurrentWeather: function(forecast) {
         let rawData = forecast.currently;
         let data = {};
         data.date = (new Date(rawData.time * 1000));
         data.summary = rawData.summary;
+        data.icon = this.icons[rawData.icon];
+        data.iconName = rawData.icon;
         data.pressure = rawData.pressure;
         data.humidity = rawData.humidity;
         data.windSpeed = rawData.windSpeed;

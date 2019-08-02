@@ -73,6 +73,7 @@ class WeatherApp extends React.Component {
     let title, content;
     if(showingCurrentWeather) {
       const currentWeather = DataExtractor.getCurrentWeather(weatherData);
+      console.log(currentWeather);
       title = (
 				<SearchBar 
 					cityName={cityName}
