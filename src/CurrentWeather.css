@@ -2,6 +2,7 @@
 	background: lime;
 	display: flex;
 	flex-basis: 25%;
+	overflow: hidden;
 }
 .current-weather-summary-text {
 	background: cyan;
@@ -13,11 +14,40 @@
 
 }
 .current-weather-info {
+	position: relative;
 	flex-basis: 40%;
 	background: blue;
 	overflow: hidden;
 }
-.hourly-temp-chart-container {
+#hourlyWeatherContainer {
 	flex-basis: 35%;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
 	background: chocolate;
+	overflow: hidden;
+}
+.hourly-weather-card {
+	display: flex;
+	flex-direction: column;
+	min-width: 75px;
+	height: 100%;
+}
+.hourly-weather-temp {
+	flex-basis: 10%;
+	width: 100%;	
+	text-align: center;
+}
+.hourly-weather-icon-container {
+	flex-basis: 70%;
+	width: 100%;	
+}
+.hourly-weather-icon {
+	width: 100%;
+	height: 100%;
+}
+.hourly-weather-hour {
+	text-align: center;
+	flex-basis: 10%;
+	width: 100%;
 }

@@ -76,7 +76,8 @@ var DataExtractor = {
             let datum = {};
             datum.time = date.getHours();
             datum.summary = hourlyWeather[i].summary;
-            datum.icon = hourlyWeather[i].icon;
+            datum.iconName = hourlyWeather[i].icon;
+            datum.icon = this.icons[datum.iconName];
             datum.temp = hourlyWeather[i].temperature;
             data.push(datum); 
         }
