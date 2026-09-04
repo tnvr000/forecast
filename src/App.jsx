@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import WeatherApp from './WeatherApp'
@@ -28,6 +28,7 @@ class App extends Component {
       this.setState({forecast, lat, lon, name});
     })
   }
+
   render() {
     return (
       <div className="App">
@@ -53,7 +54,8 @@ function loadWeather(lat, lon) {
         resolve(data);
       }
     }
-    let api = 'f8284a4a78a88495ffa48f544b8ab846';
+    const api = import.meta.env.VITE_API_KEY
+
     request.open('get', `/forecast/${api}/${lat},${lon}`, true);
     request.send();
   }));
