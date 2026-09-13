@@ -1,7 +1,7 @@
 import React, {Component, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import WeatherApp from './WeatherApp'
+import WeatherApp from './features/weather/WeatherApp'
 import { getCurrentWeather } from './services/Weather/WeatherService';
 
 class App extends Component {
@@ -10,6 +10,7 @@ class App extends Component {
 
     this.state = {
       forecast: null,
+      currentWeather: null,
       lat: 20,
       lon: 86,
       name: "Bhubaneswar",
@@ -28,7 +29,7 @@ class App extends Component {
 
   loadWeather = (lat, lon) => {
   getCurrentWeather('openWeather', lat, lon).then((res) => {
-    console.log('App:res', res);
+    // console.log('App:res', res);
     this.setState({forecast: res})
   });
 }

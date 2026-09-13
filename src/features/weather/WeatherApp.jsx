@@ -1,10 +1,10 @@
 import React from 'react';
 import './WeatherApp.css'
-import DataExtractor from './DataExtractor';
-import CurrentWeather from './CurrentWeather';
-import DailyWeather from './DailyWeather';
-import DateCard from './DateCard';
-import SearchBar from './SearchBar';
+import DataExtractor from '../../DataExtractor';
+import CurrentWeather from '../../CurrentWeather';
+import DailyWeather from '../../DailyWeather';
+import DateCard from '../../DateCard';
+import SearchBar from '../../SearchBar';
 
 class WeatherApp extends React.Component {
   constructor(props) {
@@ -65,15 +65,14 @@ class WeatherApp extends React.Component {
 
   render() {
     const weatherData = this.props.forecast;
-    if(weatherData === null) {
+    if(this.props.forecast === null) {
       return null;
 		}
 		const {showingCurrentWeather} = this.state;
 		const cityName = this.props.cityName;
     let title, content;
     if(showingCurrentWeather) {
-      const currentWeather = DataExtractor.getCurrentWeather(weatherData);
-      console.log(currentWeather);
+      // console.log('WeatherApp:this.props.forecast', this.props.forecast);
       title = (
 				<SearchBar 
 					cityName={cityName}
@@ -84,7 +83,7 @@ class WeatherApp extends React.Component {
       );
 
       content = (
-        <CurrentWeather currentWeather = {currentWeather} />
+        <CurrentWeather currentWeather = {this.props.forecast.current} />
       );
     } else {
       const {dateOffset} = this.state
