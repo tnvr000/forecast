@@ -2,6 +2,7 @@ import React, {Component, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import WeatherApp from './WeatherApp'
+import { getCurrentWeather } from './services/Weather/WeatherService';
 
 class App extends Component {
   constructor(props) {
@@ -18,16 +19,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    loadWeather(this.state.lat, this.state.lon).then((forecast) => {
-      this.setState({forecast});
-    });
+    this.loadWeather(this.state.lat, this.state.lon)
   }
 
   updateLocation(lat, lon, name) {
-    loadWeather(lat, lon).then((forecast) => {
-      this.setState({forecast, lat, lon, name});
-    })
+    this.loadWeather(lat, lon)
   }
+
+  loadWeather = (lat, lon) => {
+  getCurrentWeather('openWeather', lat, lon).then((res) => {
+    console.log('App:res', res);
+    this.setState({forecast: res})
+  });
+}
 
   render() {
     return (
@@ -43,22 +47,6 @@ class App extends Component {
       </div>
     );
   }
-}
-
-function loadWeather(lat, lon) {
-  return (new Promise(function(resolve, reject) {
-    let request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-      if(this.readyState === 4 && this.status === 200) {
-        let data = JSON.parse(this.responseText);
-        resolve(data);
-      }
-    }
-    const api = import.meta.env.VITE_API_KEY
-
-    request.open('get', `/forecast/${api}/${lat},${lon}`, true);
-    request.send();
-  }));
 }
 
 export default App;
