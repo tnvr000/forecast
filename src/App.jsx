@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import WeatherApp from './features/weather/WeatherApp'
@@ -10,29 +10,36 @@ class App extends Component {
 
     this.state = {
       forecast: null,
-      currentWeather: null,
-      lat: 20,
-      lon: 86,
-      name: "Bhubaneswar",
+      location: {
+        name: 'Bhubaneswar',
+        latitude: 20.27241,
+        longitude: 85.83385,
+        country: 'India',
+        timezone: 'Asia/Kolkata',
+        admin1: 'Odisha',
+        admin2: 'Khordha',
+        admin3: 'Bhubaneswar M Corp',
+        admin4: '',
+      }
     }
 
     this.updateLocation = this.updateLocation.bind(this);
   }
 
   componentDidMount() {
-    this.loadWeather(this.state.lat, this.state.lon)
+    this.loadWeather(this.state.location)
   }
 
-  updateLocation(lat, lon, name) {
-    this.loadWeather(lat, lon)
+  updateLocation(location) {
+    this.setState({ location });
+    this.loadWeather(location);
   }
 
-  loadWeather = (lat, lon) => {
-  getCurrentWeather('openWeather', lat, lon).then((res) => {
-    // console.log('App:res', res);
-    this.setState({forecast: res})
-  });
-}
+  loadWeather = (location) => {
+    getCurrentWeather('openWeather', location.latitude, location.longitude).then((res) => {
+      this.setState({forecast: res})
+    });
+  }
 
   render() {
     return (
@@ -41,7 +48,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </div>
         <WeatherApp 
-          cityName={this.state.name}
+          cityName={this.state.location.name}
           forecast={this.state.forecast}
           updateLocation={this.updateLocation}
         />

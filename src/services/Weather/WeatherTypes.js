@@ -43,28 +43,3 @@
  * @property {string} provider
  * @property {number} fetchedAt
  */
-
-// export const WeatherData = {
-//   current: {
-//       temperature: null,
-//       feelsLike: null,
-//       humidity: null,
-//       pressure: null,
-//       windSpeed: null,
-//       precipitation: null,
-//       condition: null,
-//       description: null,
-//       icon: null,
-//     },
-//     forecast: {
-//       daily: [],
-//       hourly: [],
-//     },
-//     meta: {
-//       provider: null,
-//       observedAt: null,
-//     },
-//     timestamp: null,
-//     sunrise: null,
-//     sunset: null,
-// }

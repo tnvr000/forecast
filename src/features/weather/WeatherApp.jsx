@@ -12,11 +12,6 @@ class WeatherApp extends React.Component {
     this.state = {
       forecast: null,
       showingCurrentWeather: true,
-			currentWeather: {
-        summary: null,
-				date: null,
-				temp: null,
-			},
       dailyWeather: {
         date: null,
         summary: null,
@@ -32,12 +27,10 @@ class WeatherApp extends React.Component {
         moonPhase: null
       },
 			dateOffset: 0,
-			cityName: "Bhubaneswar",
 		}
 		
     this.changeDate = this.changeDate.bind(this);
     this.toggleCurrentWeather = this.toggleCurrentWeather.bind(this);
-    this.changeLocation = this.changeLocation.bind(this);
 	}
 
   changeDate(number) {
@@ -54,10 +47,6 @@ class WeatherApp extends React.Component {
     });
   }
 
-  changeLocation(lat, lon, name) {
-		this.props.updateLocation(lat, lon, name);
-  }
-
   toggleCurrentWeather(showingCurrentWeather) {
     this.setState({showingCurrentWeather});
   }
@@ -68,15 +57,14 @@ class WeatherApp extends React.Component {
       return null;
 		}
 		const {showingCurrentWeather} = this.state;
-		const cityName = this.props.cityName;
     let title, content;
     if(showingCurrentWeather) {
       // console.log('WeatherApp:this.props.forecast', this.props.forecast);
       title = (
 				<SearchBar 
-					cityName={cityName}
+					cityName={this.props.cityName}
           toggleCurrentWeather={this.toggleCurrentWeather}
-          changeLocation={this.changeLocation}
+          updateLocation={this.props.updateLocation}
 
         />
       );

@@ -4,7 +4,6 @@ import ScrollBar from '../../ScrollBar';
 
 class CurrentWeather extends React.Component {
 	render() {
-		console.log('CurrentWeather:this.props', this.props)
 		return (
 			<div className="current-weather">
 				<div className="current-weather-summary">
