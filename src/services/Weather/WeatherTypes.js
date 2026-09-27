@@ -11,6 +11,12 @@
  */
 
 /**
+ * @typedef {Object} Meta
+ * @property {String} provider
+ * @property {Number} observedAt
+ */
+
+/**
  * @typedef {Object} CurrentWeather
  * @property {number} temperature
  * @property {number} feelsLike
@@ -22,6 +28,14 @@
  */
 
 /**
+ * @typedef {Object} CurrentWeatherData
+ * @property {Location} location
+ * @property {Position} position
+ * @property {CurrentWeather} current
+ * @property {Meta} meta
+ */
+
+/**
  * @typedef {Object} DailyForecast
  * @property {string} date
  * @property {number} minTemperature
@@ -30,16 +44,25 @@
  */
 
 /**
- * @typedef {Object} Forecast
+ * @typedef {Object} DailyForecastData
+ * @property {Location} location
+ * @property {Position} position
  * @property {DailyForecast[]} daily
+ * @property {Meta} meta
  */
 
 /**
- * @typedef {Object} WeatherData
+ * @typedef {Object} HourlyForecast
+ * @property {string} date
+ * @property {number} minTemperature
+ * @property {number} maxTemperature
+ * @property {string} condition
+ */
+
+/**
+ * @typedef {Object} HourlyForecastData
  * @property {Location} location
  * @property {Position} position
- * @property {CurrentWeather} current
- * @property {Forecast} forecast
- * @property {string} provider
- * @property {number} fetchedAt
+ * @property {HourlyForecast[]} hourly
+ * @property {Meta} meta
  */

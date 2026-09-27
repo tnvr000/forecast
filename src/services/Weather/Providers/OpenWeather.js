@@ -6,7 +6,7 @@ const BASE_URL = 'https://api.openweathermap.org/data/2.5';
  * 
  * @param {number} latitude
  * @param {number} longitude
- * @returns {Promise<WeatherData>}
+ * @returns {Promise<CurrentWeatherData>}
  */
 export async function getCurrentWeather(latitude, longitude) {
   const url = new URL(`${BASE_URL}/weather`);
@@ -33,7 +33,7 @@ export async function getCurrentWeather(latitude, longitude) {
  * convert OpenWeather's response into our application's weather model
  * 
  * @param {Object} data
- * @returns {WeatherData}
+ * @returns {CurrentWeatherData}
  */
 function normalizeCurrentWeather(data) {
   return ({
@@ -55,10 +55,9 @@ function normalizeCurrentWeather(data) {
       condition: data.weather[0].main ?? 'Unknown',
       description: data.weather[0]?.description ?? '',
     },
-    forecast: { daily: [] },
     meta: {
       provider: 'openWeather',
-      observerAt: data.dt
+      observedAt: data.dt
     },
   });
 }

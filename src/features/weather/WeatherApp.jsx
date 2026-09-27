@@ -10,22 +10,7 @@ class WeatherApp extends React.Component {
     super(props);
 
     this.state = {
-      forecast: null,
       showingCurrentWeather: true,
-      dailyWeather: {
-        date: null,
-        summary: null,
-        tempHigh: null,
-        tempMax: null,
-        tempLow: null,
-        tempMin: null,
-        humidity: null,
-        windSpeed: null,
-        uvIndex: null,
-        sunriseTime: null,
-        sunsetTime: null,
-        moonPhase: null
-      },
 			dateOffset: 0,
 		}
 		
@@ -52,25 +37,19 @@ class WeatherApp extends React.Component {
   }
 
   render() {
-    const weatherData = this.props.forecast;
-    if(this.props.forecast === null) {
-      return null;
-		}
-		const {showingCurrentWeather} = this.state;
     let title, content;
-    if(showingCurrentWeather) {
-      // console.log('WeatherApp:this.props.forecast', this.props.forecast);
+    if(this.state.showingCurrentWeather) {
       title = (
 				<SearchBar 
-					cityName={this.props.cityName}
+					cityName={this.props.location.name}
           toggleCurrentWeather={this.toggleCurrentWeather}
           updateLocation={this.props.updateLocation}
 
         />
       );
 
-      content = (
-        <CurrentWeather currentWeather = {this.props.forecast.current} />
+      content = ( this.props.currentWeather &&
+        <CurrentWeather currentWeather = {this.props.currentWeather.current} />
       );
     } else {
       const {dateOffset} = this.state

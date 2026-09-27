@@ -9,7 +9,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      forecast: null,
+      currentWeather: null,
+      dailyWeather: null,
       location: {
         name: 'Bhubaneswar',
         latitude: 20.27241,
@@ -20,7 +21,7 @@ class App extends Component {
         admin2: 'Khordha',
         admin3: 'Bhubaneswar M Corp',
         admin4: '',
-      }
+      },
     }
 
     this.updateLocation = this.updateLocation.bind(this);
@@ -37,7 +38,7 @@ class App extends Component {
 
   loadWeather = (location) => {
     getCurrentWeather('openWeather', location.latitude, location.longitude).then((res) => {
-      this.setState({forecast: res})
+      this.setState({currentWeather: res})
     });
   }
 
@@ -48,8 +49,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </div>
         <WeatherApp 
-          cityName={this.state.location.name}
-          forecast={this.state.forecast}
+          location={this.state.location}
+          currentWeather={this.state.currentWeather}
+          dailyWeather={this.state.dailyWeather}
           updateLocation={this.updateLocation}
         />
       </div>
