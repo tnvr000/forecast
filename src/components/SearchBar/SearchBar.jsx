@@ -1,6 +1,6 @@
 import React from 'react'
-import './SearchBar.css'
 import AutoCompleteSearchBox from './AutoCompleteSearchBox';
+import './SearchBar.css'
 
 class SearchBar extends React.Component {
   constructor(props) {

@@ -3,7 +3,7 @@ import './WeatherApp.css'
 import CurrentWeather from './CurrentWeather';
 import DailyWeather from '../../DailyWeather';
 import DateCard from '../../DateCard';
-import SearchBar from '../../SearchBar';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 class WeatherApp extends React.Component {
   constructor(props) {

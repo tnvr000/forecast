@@ -1,6 +1,6 @@
 import React from 'react';
+import { searchCoordinates } from '../../services/Geocoding/GeocodingService';
 import './AutoCompleteSearchBox.css';
-import { searchCoordinates } from './services/Geocoding/GeocodingService';
 
 const SEARCH_DEBOUNCE_MS = 300;
 
