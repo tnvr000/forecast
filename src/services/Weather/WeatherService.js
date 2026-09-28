@@ -14,6 +14,16 @@ export async function getCurrentWeather(provider, latitude, longitude) {
   return weatherProvider.getCurrentWeather(latitude, longitude)
 }
 
+export async function getDailyCurrentWeather(provider, latitude, longitude) {
+  const weatherProvider = providers[provider];
+
+  if (!weatherProvider) {
+    throw new Error(`Unknown weather Provider: ${provider}`);
+  }
+
+  return weatherProvider.getDailyWeather(latitude, longitude)
+}
+
 export function getAvailableProviders() {
   return Object.keys(providers)
 }
