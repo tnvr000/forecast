@@ -1,5 +1,5 @@
 import React from 'react';
-import './DateCard.css';
+import './styles/DateCard.css';
 
 class DateCard extends React.Component {
   handleClickNextDate = () => {

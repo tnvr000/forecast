@@ -1,5 +1,5 @@
 import React from 'react';
-import './CurrentWeather.css'
+import './styles/CurrentWeather.css';
 import ScrollBar from '../../ScrollBar';
 
 class CurrentWeather extends React.Component {

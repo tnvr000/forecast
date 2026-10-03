@@ -1,8 +1,8 @@
 import React from 'react';
-import './WeatherApp.css'
+import './styles/WeatherApp.css'
 import CurrentWeather from './CurrentWeather';
-import DailyWeather from '../../DailyWeather';
-import DateCard from '../../DateCard';
+import DailyWeather from './DailyWeather';
+import DateCard from './DateCard';
 import SearchBar from '../../components/SearchBar/SearchBar';
 
 class WeatherApp extends React.Component {

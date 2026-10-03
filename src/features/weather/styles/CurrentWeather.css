@@ -10,9 +10,6 @@
 .current-weather-icon-container {
 	background: yellowgreen;
 }
-.current-weather-icon {
-
-}
 .current-weather-info {
 	position: relative;
 	flex-basis: 40%;
