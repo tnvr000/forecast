@@ -49,7 +49,10 @@ class WeatherApp extends React.Component {
       );
 
       content = ( this.props.currentWeather &&
-        <CurrentWeather currentWeather = {this.props.currentWeather.current} />
+        <CurrentWeather
+          currentWeather = {this.props.currentWeather?.current}
+          hourlyWeather = {this.props.hourlyWeather?.hourly}
+        />
       );
     } else {
       const dailyWeather = this.props.dailyWeather.daily;
