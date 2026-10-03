@@ -1,6 +1,6 @@
 import React from 'react';
-import './CurrentWeather.css'
-import ScrollBar from '../../ScrollBar';
+import './styles/CurrentWeather.css';
+import HourlyWeather from './HourlyWeather';
 
 class CurrentWeather extends React.Component {
 	render() {
@@ -36,6 +36,13 @@ class CurrentWeather extends React.Component {
 							{this.props.currentWeather.pressure}
 						</div>
 					</div>
+				</div>
+				<div id="hourlyWeatherContainer">
+					{this.props.hourlyWeather &&
+						this.props.hourlyWeather.map((item) => {
+							return (<HourlyWeather key={item.timestamp} hourlyWeather={item} />)
+						})
+					}
 				</div>
 			</div>
 		);

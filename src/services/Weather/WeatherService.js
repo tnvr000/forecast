@@ -11,7 +11,27 @@ export async function getCurrentWeather(provider, latitude, longitude) {
     throw new Error(`Unknown weather Provider: ${provider}`);
   }
 
-  return weatherProvider.getCurrentWeather(latitude, longitude)
+  return weatherProvider.getCurrentWeather(latitude, longitude);
+}
+
+export async function getDailyWeather(provider, latitude, longitude) {
+  const weatherProvider = providers[provider];
+
+  if (!weatherProvider) {
+    throw new Error(`Unknown weather Provider: ${provider}`);
+  }
+
+  return weatherProvider.getDailyWeather(latitude, longitude);
+}
+
+export async function getHourlyWeather(provider, latitude, longitude) {
+  const weatherProvider = providers[provider];
+
+  if (!weatherProvider) {
+    throw new Error(`Unknown weather Provider: ${provider}`);
+  }
+
+  return weatherProvider.getHourlyWeather(latitude, longitude);
 }
 
 export async function getDailyCurrentWeather(provider, latitude, longitude) {
@@ -25,5 +45,5 @@ export async function getDailyCurrentWeather(provider, latitude, longitude) {
 }
 
 export function getAvailableProviders() {
-  return Object.keys(providers)
+  return Object.keys(providers);
 }

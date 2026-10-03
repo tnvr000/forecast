@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import WeatherApp from './features/weather/WeatherApp'
-import { getCurrentWeather } from './services/Weather/WeatherService';
+import { getCurrentWeather, getDailyWeather, getHourlyWeather } from './services/Weather/WeatherService';
 
 class App extends Component {
   constructor(props) {
@@ -10,6 +10,7 @@ class App extends Component {
 
     this.state = {
       currentWeather: null,
+      hourlyWeather: null,
       dailyWeather: null,
       location: {
         name: 'Bhubaneswar',
@@ -36,11 +37,31 @@ class App extends Component {
     this.loadWeather(location);
   }
 
-  loadWeather = (location) => {
-    getCurrentWeather('openWeather', location.latitude, location.longitude).then((res) => {
-      this.setState({currentWeather: res})
+  loadWeather = async (location) => {
+    const [currentWeather, hourlyWeather, dailyWeather] = await Promise.all([
+      getCurrentWeather(
+        'openWeather',
+        location.latitude,
+        location.longitude,
+      ),
+      getHourlyWeather(
+        'openWeather',
+        location.latitude,
+        location.longitude,
+      ),
+      getDailyWeather(
+        'openWeather',
+        location.latitude,
+        location.longitude,
+      ),
+    ]);
+
+    this.setState({
+      currentWeather,
+      hourlyWeather,
+      dailyWeather,
     });
-  }
+  };
 
   render() {
     return (
@@ -51,6 +72,7 @@ class App extends Component {
         <WeatherApp 
           location={this.state.location}
           currentWeather={this.state.currentWeather}
+          hourlyWeather={this.state.hourlyWeather}
           dailyWeather={this.state.dailyWeather}
           updateLocation={this.updateLocation}
         />
