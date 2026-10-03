@@ -1,46 +1,50 @@
 import React from 'react';
-import './DateCard.css'
+import './DateCard.css';
 
 class DateCard extends React.Component {
-  constructor(props) {
-    super(props);
+  handleClickNextDate = () => {
+    this.props.onClickChangeDate(1);
+  };
 
-     this.state = {
-      dailyWeather: {
-        date: null,
-      },
-      dateOffset: 0,
-     };
-
-     this.handleClickNextDate = this.handleClickNextDate.bind(this);
-     this.handleClickPreviousDate = this.handleClickPreviousDate.bind(this);
-     this.handleOnClickHideDailyWeather = this.handleOnClickHideDailyWeather.bind(this);
-  }
-
-  handleClickNextDate() {
-		this.props.onClickChangeDate(1);
-  }
-
-  handleClickPreviousDate() {
+  handleClickPreviousDate = () => {
     this.props.onClickChangeDate(-1);
-  }
-  handleOnClickHideDailyWeather() {
+  };
+
+  handleOnClickHideDailyWeather = () => {
     this.props.toggleCurrentWeather(true);
-  }
+  };
 
   render() {
+    const { dailyWeather } = this.props;
+
     return (
       <div className="date-container">
-        <div className="daily-weather-hide-container">
-          <label className="daily-weather-hide" onClick={this.handleOnClickHideDailyWeather}>&lt;</label>
+        <button
+          className="daily-weather-hide"
+          onClick={this.handleOnClickHideDailyWeather}
+        >
+          &lt;
+        </button>
+
+        <button
+          className="previous-date"
+          onClick={this.handleClickPreviousDate}
+          disabled={!this.props.hasPreviousDate}
+        >
+          &lt;
+        </button>
+
+        <div className="date">
+          {dailyWeather.date}
         </div>
-        <div className="previous-date" onClick={this.handleClickPreviousDate} >
-          {"<"}
-        </div>
-        <label className="date">{this.props.dailyWeather.date}</label>
-        <div className="next-date" onClick={this.handleClickNextDate} >
-          {">"}
-        </div>
+
+        <button
+          className="next-date"
+          onClick={this.handleClickNextDate}
+          disabled={!this.props.hasNextDate}
+        >
+          &gt;
+        </button>
       </div>
     );
   }

@@ -1,40 +1,32 @@
-import React from 'react'
-import './DailyWeather.css'
+import React from 'react';
+import './DailyWeather.css';
 
 class DailyWeather extends React.Component {
   render() {
+    const { dailyWeather } = this.props;
+
     return (
       <div className="daily-weather">
         <div className="daily-weather-summary">
-          {this.props.dailyWeather.summary}
+          {dailyWeather.condition}
         </div>
+
         <div className="info-container">
           <div className="info-label">
-            Max Temp
+            Maximum Temperature
           </div>
+
           <div className="info-value">
-            {this.props.dailyWeather.tempMax}{' feels like '}
-            {this.props.dailyWeather.appTempMax}{' at '}
-            {this.props.dailyWeather.tempMaxTime}
+            {dailyWeather.maxTemperature}°C
           </div>
 
           <div className="info-label">
-            Min Temp
-          </div>
-          <div className="info-value">
-            {this.props.dailyWeather.tempMin}{' feels like '}
-            {this.props.dailyWeather.appTempMin}{' at '}
-            {this.props.dailyWeather.tempMinTime}
+            Minimum Temperature
           </div>
 
-          <div className="info-label">
-            Humidity
-          </div>
           <div className="info-value">
-            {this.props.dailyWeather.humidity}
+            {dailyWeather.minTemperature}°C
           </div>
-          
-
         </div>
       </div>
     );

@@ -11,7 +11,7 @@ class WeatherApp extends React.Component {
 
     this.state = {
       showingCurrentWeather: true,
-			dateOffset: 0,
+			dateOffset: 1,
 		}
 		
     this.changeDate = this.changeDate.bind(this);
@@ -20,15 +20,14 @@ class WeatherApp extends React.Component {
 
   changeDate(number) {
     this.setState((state) => {
-      const forecast = this.props.forecast;
-			let dateOffset = state.dateOffset + number;
-			let maxDateOffset = forecast.daily.data.length;
-			if(dateOffset >= 0 && dateOffset < maxDateOffset) {
-				let dailyWeather = DataExtractor.getDailyWeather(forecast, dateOffset);
-				return ({dailyWeather, dateOffset});
-			} else {
-				return null;
-			}
+      const maxDateOffset = this.props.dailyWeather.daily.length - 1;
+
+      const dateOffset = Math.min(
+        Math.max(state.dateOffset + number, 1),
+        maxDateOffset
+      );
+
+      return { dateOffset };
     });
   }
 
@@ -38,6 +37,7 @@ class WeatherApp extends React.Component {
 
   render() {
     let title, content;
+
     if(this.state.showingCurrentWeather) {
       title = (
 				<SearchBar 
@@ -52,19 +52,20 @@ class WeatherApp extends React.Component {
         <CurrentWeather currentWeather = {this.props.currentWeather.current} />
       );
     } else {
-      const {dateOffset} = this.state
-      const dailyWeather = DataExtractor.getDailyWeather(weatherData, dateOffset);
+      const dailyWeather = this.props.dailyWeather.daily;
+
       title = (
         <DateCard
-          dailyWeather={dailyWeather}
+          dailyWeather={dailyWeather[this.state.dateOffset]}
           onClickChangeDate={this.changeDate}
           toggleCurrentWeather={this.toggleCurrentWeather}
-          on
+          hasPreviousDate={this.state.dateOffset > 1}
+          hasNextDate={this.state.dateOffset < dailyWeather.length - 1}
         />
       );
 
       content = (
-        <DailyWeather dailyWeather={dailyWeather}/>
+        <DailyWeather dailyWeather={dailyWeather[this.state.dateOffset]} />
       );
     }
     return (

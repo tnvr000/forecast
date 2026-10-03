@@ -14,7 +14,7 @@ export async function getCurrentWeather(provider, latitude, longitude) {
   return weatherProvider.getCurrentWeather(latitude, longitude)
 }
 
-export async function getDailyCurrentWeather(provider, latitude, longitude) {
+export async function getDailyWeather(provider, latitude, longitude) {
   const weatherProvider = providers[provider];
 
   if (!weatherProvider) {

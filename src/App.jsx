@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import WeatherApp from './features/weather/WeatherApp'
-import { getCurrentWeather } from './services/Weather/WeatherService';
+import { getCurrentWeather, getDailyWeather } from './services/Weather/WeatherService';
 
 class App extends Component {
   constructor(props) {
@@ -36,11 +36,25 @@ class App extends Component {
     this.loadWeather(location);
   }
 
-  loadWeather = (location) => {
-    getCurrentWeather('openWeather', location.latitude, location.longitude).then((res) => {
-      this.setState({currentWeather: res})
+  loadWeather = async (location) => {
+    const [currentWeather, dailyWeather] = await Promise.all([
+      getCurrentWeather(
+        'openWeather',
+        location.latitude,
+        location.longitude
+      ),
+      getDailyWeather(
+        'openWeather',
+        location.latitude,
+        location.longitude
+      ),
+    ]);
+
+    this.setState({
+      currentWeather,
+      dailyWeather,
     });
-  }
+  };
 
   render() {
     return (
