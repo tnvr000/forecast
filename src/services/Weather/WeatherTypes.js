@@ -55,7 +55,7 @@
 
 /**
  * @typedef {Object} HourlyForecast
- * @property {string} date
+ * @property {string} timestamp
  * @property {number} minTemperature
  * @property {number} maxTemperature
  * @property {string} condition
