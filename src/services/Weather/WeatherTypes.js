@@ -12,8 +12,8 @@
 
 /**
  * @typedef {Object} Meta
- * @property {String} provider
- * @property {Number} observedAt
+ * @property {string} provider
+ * @property {number} observedAt
  */
 
 /**
@@ -25,6 +25,8 @@
  * @property {number} precipitation
  * @property {string} condition
  * @property {string} description
+ * @property {number} sunrise
+ * @property {number} sunset
  */
 
 /**
@@ -53,7 +55,7 @@
 
 /**
  * @typedef {Object} HourlyForecast
- * @property {string} date
+ * @property {string} timestamp
  * @property {number} minTemperature
  * @property {number} maxTemperature
  * @property {string} condition

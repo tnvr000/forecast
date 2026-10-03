@@ -1,31 +1,10 @@
-.current-weather-summary {
-	background: lime;
-	display: flex;
-	flex-basis: 25%;
-	overflow: hidden;
-}
-.current-weather-summary-text {
-	background: cyan;
-}
-.current-weather-icon-container {
-	background: yellowgreen;
-}
-.current-weather-icon {
-
-}
-.current-weather-info {
-	position: relative;
-	flex-basis: 40%;
-	background: blue;
-	overflow: hidden;
-}
 #hourlyWeatherContainer {
 	flex-basis: 35%;
 	display: flex;
 	flex-direction: row;
 	width: 100%;
 	background: chocolate;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 .hourly-weather-card {
 	display: flex;
