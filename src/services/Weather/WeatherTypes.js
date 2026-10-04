@@ -24,6 +24,7 @@
  * @property {number} windSpeed
  * @property {number} precipitation
  * @property {string} condition
+ * @property {string} backgroundCondition
  * @property {string} description
  * @property {number} sunrise
  * @property {number} sunset
