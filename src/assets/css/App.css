@@ -48,6 +48,8 @@ body {
 .App {
   min-height: 100vh;
   background-image: var(--weather-background);
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -64,11 +66,13 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  flex-basis: 10vh
 }
 
 .App-link {
   color: #61dafb;
 }
+
 .daily-weather-hide-container {
   position: absolute;
   background: red;
