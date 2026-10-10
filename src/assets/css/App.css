@@ -1,4 +1,53 @@
+/** Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+img,
+picture,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+/** Reset End */
+
+/** Global */
+:root {
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+}
+/** Global End */
+
 .App {
+  min-height: 100vh;
+  background-image: var(--weather-background);
 }
 
 .App-logo {

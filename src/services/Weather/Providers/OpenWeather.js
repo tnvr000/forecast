@@ -103,6 +103,7 @@ function normalizeCurrentWeather(data) {
       windSpeed: data.wind.speed,
       precipitation: data.rain?.['1h'] ?? 0,
       condition: data.weather[0]?.main ?? 'Unknown',
+      backgroundCondition: getBackgroundCondition(data.weather[0]?.main ?? 'Unknown'),
       description: data.weather[0]?.description ?? '',
       sunrise: data.sys.sunrise,
       sunset: data.sys.sunset,
@@ -214,4 +215,43 @@ function getMostFrequentCondition(conditions) {
 
   return Object.entries(counts)
     .sort((a, b) => b[1] - a[1])[0][0];
+}
+
+/**
+ * Get the main weather condition for background
+ *
+ * @param {string[]} condition
+ * @returns {string}
+ */
+function getBackgroundCondition(condition) {
+  if (!condition.length) {
+    return 'Unknown';
+  }
+
+  let backgroundCondition;
+  switch (condition) {
+    case 'Clear':
+      backgroundCondition = 'clear';
+      break;
+    case 'Clouds':
+      backgroundCondition = 'clouds';
+      break;
+    case 'Rain', 'Drizzle':
+      backgroundCondition = 'rain';
+      break;
+    case 'Snow':
+      backgroundCondition = 'snow';
+      break;
+    case 'Thunderstorm':
+      backgroundCondition = 'thunderstorm';
+      break;
+    case 'Mist', 'Smoke', 'Haze', 'Dust', 'Fog', 'Sand', 'Ash':
+      backgroundCondition = 'fog';
+      break;
+    default:
+      backgroundCondition = 'clear';
+      break;
+  }
+
+  return backgroundCondition;
 }

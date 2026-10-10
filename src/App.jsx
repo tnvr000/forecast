@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './assets/css/App.css'
 import WeatherApp from './features/weather/WeatherApp'
 import { getCurrentWeather, getDailyWeather, getHourlyWeather } from './services/Weather/WeatherService';
+import { weatherBackgrounds } from './utils/backgrounds';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      background: null,
       currentWeather: null,
       hourlyWeather: null,
       dailyWeather: null,
@@ -56,7 +58,12 @@ class App extends Component {
       ),
     ]);
 
+    const timestamp = Math.floor(Date.now() / 1000);
+    const isDay = timestamp >= currentWeather.current.sunrise && timestamp < currentWeather.current.sunset;
+    const background = `${currentWeather.current.backgroundCondition}-${isDay ? 'day' : 'night'}-desktop`;
+
     this.setState({
+      background,
       currentWeather,
       hourlyWeather,
       dailyWeather,
@@ -64,8 +71,10 @@ class App extends Component {
   };
 
   render() {
+    const backgroundImage = weatherBackgrounds[this.state.background];
+
     return (
-      <div className="App">
+      <div className="App" style={{ '--weather-background': `url(${backgroundImage})` }}>
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </div>
