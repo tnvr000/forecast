@@ -11,14 +11,9 @@
 
 	margin: 0px;
 	width: 100%;
-	height: 90vh;
+	height: 95vh;
 	min-width: 550px;
 	min-height: 400px;
-}
-.search-bar-container {
-	height: 15%;
-	background: blueviolet;
-	position: relative;
 }
 .current-weather {
 	display: flex;

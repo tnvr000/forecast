@@ -3,7 +3,7 @@ import './styles/WeatherApp.css'
 import CurrentWeather from './CurrentWeather';
 import DailyWeather from './DailyWeather';
 import DateCard from './DateCard';
-import SearchBar from '../../components/SearchBar/SearchBar';
+import AutoCompleteSearchBox from '../../components/SearchBar/AutoCompleteSearchBox';
 
 class WeatherApp extends React.Component {
   constructor(props) {
@@ -40,11 +40,9 @@ class WeatherApp extends React.Component {
 
     if(this.state.showingCurrentWeather) {
       title = (
-				<SearchBar 
-					cityName={this.props.location.name}
-          toggleCurrentWeather={this.toggleCurrentWeather}
-          updateLocation={this.props.updateLocation}
-
+				<AutoCompleteSearchBox
+					defaultText={this.props.location.name}
+          suggestionSelected={this.props.updateLocation}
         />
       );
 

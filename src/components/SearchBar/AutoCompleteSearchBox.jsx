@@ -87,19 +87,21 @@ class AutoCompleteSearchBox extends React.Component {
   render() {
     const { text, suggestions } = this.state
     return (
-      <div className="auto-complete-search-box-container">
-        <div className="search-box-container">
-          <input
-            type="text"
-            value={text}
-            onChange={this.handleOnChangeText}
-            onKeyUp={this.handleOnKeyUpText}
+      <div className="search-bar-container">
+        <div className="auto-complete-search-box-container">
+          <div className="search-box-container">
+            <input
+              type="text"
+              value={text}
+              onChange={this.handleOnChangeText}
+              onKeyUp={this.handleOnKeyUpText}
+            />
+          </div>
+          <Suggestion
+            suggestions={suggestions}
+            selectSuggestion={this.selectSuggestion}
           />
         </div>
-        <Suggestion
-          suggestions={suggestions}
-          selectSuggestion={this.selectSuggestion}
-        />
       </div>
     );
   }
